@@ -169,9 +169,9 @@ if __name__ == '__main__':
             for images, labels in trainingLoad:
                 images = images.to(device)
                 labels = labels.to(device)
-                optimizer.zero_grad() 
                 outputs = network(images)
                 loss = lossFunction(outputs, labels)
+                optimizer.zero_grad() 
                 loss.backward()
                 optimizer.step()
 
