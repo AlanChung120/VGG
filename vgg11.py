@@ -147,7 +147,7 @@ if __name__ == '__main__':
     testMLoad = torch.utils.data.DataLoader(testMediumNoise, batch_size=4, shuffle=False)
     testBLoad = torch.utils.data.DataLoader(testBigNoise, batch_size=4, shuffle=False)
 
-    device = torch.device("cpu")
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     network = VGG11(classes=10).to(device)
     lossFunction = nn.CrossEntropyLoss()
     optimizer = optim.Adam(network.parameters(), lr=0.001)
@@ -269,4 +269,5 @@ if __name__ == '__main__':
     plt.xlabel('Gaussian Noises')
     plt.ylabel('Test accuracy')
     plt.show()
+
 
